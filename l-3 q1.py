@@ -42,8 +42,8 @@ def miller_rabin(n, k):
     return True
 
 # Example usage:
-n = 17  # Number to test
-k = 5   # Number of iterations
+n= int(input('Enter the number : '))
+k = int (input('Enter the number of iterations : '))
 if miller_rabin(n, k):
     print(f"{n} is probably prime.")
 else:
