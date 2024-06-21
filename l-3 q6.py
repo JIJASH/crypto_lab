@@ -1,5 +1,3 @@
-# Python program to illustrate ElGamal encryption
-
 import random 
 from math import pow
 
@@ -9,11 +7,10 @@ def gcd(a, b):
 	if a < b:
 		return gcd(b, a)
 	elif a % b == 0:
-		return b;
+		return b
 	else:
 		return gcd(b, a % b)
 
-# Generating large random numbers
 def gen_key(q):
 
 	key = random.randint(pow(10, 20), q)
@@ -22,25 +19,23 @@ def gen_key(q):
 
 	return key
 
-# Modular exponentiation
 def power(a, b, c):
 	x = 1
 	y = a
 
 	while b > 0:
 		if b % 2 != 0:
-			x = (x * y) % c;
+			x = (x * y) % c
 		y = (y * y) % c
 		b = int(b / 2)
 
 	return x % c
 
-# Asymmetric encryption
 def encrypt(msg, q, h, g):
 
 	en_msg = []
 
-	k = gen_key(q)# Private key for sender
+	k = gen_key(q)
 	s = power(h, k, q)
 	p = power(g, k, q)
 	
@@ -63,7 +58,6 @@ def decrypt(en_msg, p, key, q):
 		
 	return dr_msg
 
-# Driver code
 def main():
 
 	msg = 'jijash'
@@ -72,7 +66,7 @@ def main():
 	q = random.randint(pow(10, 20), pow(10, 50))
 	g = random.randint(2, q)
 
-	key = gen_key(q)# Private key for receiver
+	key = gen_key(q)
 	h = power(g, key, q)
 	print("g used : ", g)
 	print("g^a used : ", h)

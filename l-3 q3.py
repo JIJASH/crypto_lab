@@ -57,7 +57,6 @@ def find_primitive_roots(p):
             primitive_roots.append(g)
     return primitive_roots
 
-# Example usage:
-p = 23  # You can change this to any prime number
+p = 23  
 primitive_roots = find_primitive_roots(p)
 print(f"Primitive roots of {p}: {primitive_roots}")

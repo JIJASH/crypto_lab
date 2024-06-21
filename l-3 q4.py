@@ -1,7 +1,6 @@
 import random
 
 def is_prime(n):
-    """ Check if a number is prime """
     if n <= 1:
         return False
     if n <= 3:
@@ -16,7 +15,6 @@ def is_prime(n):
     return True
 
 def find_primitive_root(p):
-    """ Find a primitive root for prime p """
     if not is_prime(p):
         return None
     phi = p - 1
@@ -32,7 +30,6 @@ def find_primitive_root(p):
     return None
 
 def find_prime_factors(n):
-    """ Find all prime factors of n """
     factors = set()
     while n % 2 == 0:
         factors.add(2)
@@ -46,23 +43,18 @@ def find_prime_factors(n):
     return factors
 
 def diffie_hellman_key_exchange(p, g):
-    """ Perform Diffie-Hellman Key Exchange """
-    # Private keys (chosen randomly)
     a = random.randint(1, p-2)
     b = random.randint(1, p-2)
     
-    # Public keys
     A = pow(g, a, p)
     B = pow(g, b, p)
     
-    # Shared secret keys
     shared_key_A = pow(B, a, p)
     shared_key_B = pow(A, b, p)
     
     return a, A, b, B, shared_key_A, shared_key_B
 
-# Example usage
-p = 17  # This should be a large prime number in real applications
+p = 17  
 g = find_primitive_root(p)
 if g is not None:
     a, A, b, B, shared_key_A, shared_key_B = diffie_hellman_key_exchange(p, g)
